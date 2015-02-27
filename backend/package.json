@@ -1,0 +1,17 @@
+{
+  "name": "dodis",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tpreusse",
+  "license": "MIT",
+  "dependencies": {
+    "d3": "^3.5.5",
+    "lodash": "^3.3.1",
+    "mysql": "^2.5.5",
+    "q": "^1.2.0"
+  }
+}
