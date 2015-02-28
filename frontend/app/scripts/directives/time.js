@@ -36,6 +36,12 @@ angular.module('dodisMapApp').directive('time', function() {
       var brushGroup = container.append('g')
         .attr('class', 'x brush');
 
+      var xAxis = d3.svg.axis().scale(x).orient('bottom');
+
+      var xAxisGroup = container.append('g')
+        .attr('transform', 'translate(0, 85)')
+        .attr('class', 'x axis');
+
       function render() {
         var data = $scope.data;
         if(!data) {
@@ -55,6 +61,9 @@ angular.module('dodisMapApp').directive('time', function() {
         brushGroup.selectAll('rect')
           .attr('y', -6)
           .attr('height', $scope.height + 12);
+
+        xAxisGroup.call(xAxis);
+        xAxisGroup.select('text').remove();
 
         allLine
           .datum(data)
