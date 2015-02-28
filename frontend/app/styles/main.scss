@@ -3,6 +3,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
+$ch-red: #E11A27;
+
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -16,77 +18,89 @@ body {
   padding-bottom: 20px;
 }
 
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
+.document-container {
+  margin: 0 -10px;
+  max-width: 915px;
 
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
+  .document {
+    border: 1px solid #000;
+    padding: 10px;
+    width: 205px;
+    height: 80px;
+    overflow: hidden;
+    margin: 10px;
   }
 }
 
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
+.time-series {
+  .line {
+    fill: none;
+    stroke: $ch-red;
+  }
 
-.container-narrow > hr {
-  margin: 30px 0;
-}
+  .axis path,
+  .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+  }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-  text-align: center;
-  border-bottom: 1px solid #e5e5e5;
-
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+  .brush .extent {
+    stroke: #fff;
+    fill: #000;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
+.globe {
+  cursor: move; // IE without grab
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+  cursor: grab;
 
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
+  &:active  {
+    cursor: -webkit-grabbing;
+    cursor: -moz-grabbing;
+    cursor: grabbing;
   }
 
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
+  circle {
+    fill: $ch-red;
+    fill-opacity: 0.6;
+    pointer-events: none;
   }
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
+
+  .overlay {
+    fill: none;
+    pointer-events: all;
   }
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
+
+  .sphere {
+    stroke: AliceBlue;
+    stroke-width: 0.5px;
+    fill: white;
+  }
+
+  .country path {
+    fill: #fff;
+    stroke-width: 0.5px;
+    stroke: #ddd;
+  }
+
+  .country path {
+    cursor: default;
+    fill: #eee;
+    stroke: #fff;
+    stroke-width: 1px;
+    // pointer-events: none;
+
+    &.is-active {
+      fill: #ddd;
+      pointer-events: all;
+    }
+    // &.is-hovered {
+    //   fill: #ccc;
+    // }
   }
 }

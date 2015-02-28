@@ -1,23 +1,31 @@
-<div class="jumbotron">
-  <h1>'Allo, 'Allo!</h1>
-  <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
-  </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
-</div>
+<div class="row">
+  <h1>Dodis Dokumente / Dodis Documents</h1>
 
-<div class="row marketing">
-  <h4>HTML5 Boilerplate</h4>
-  <p>
-    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  <svg width="915" height="715">
+    <defs></defs>
+    <g time time-data="timeSeries" time-extent="filterExtent" width="915" height="80" transform="translate(0,8)"></g>
+    <g transform="translate(0,100)" globe countries="globeCountries" radius-scale="radiusScale" features="filtered"></g>
+  </svg>
+
+  <h2>
+    <span ng-if="filterExtent">{{ dateFormat(filterExtent[0]) }} - {{ dateFormat(filterExtent[1]) }}: </span>
+    {{ filteredDocuments ? numberFormat(filteredDocuments.length) : '' }} Dokumente / Documents
+  </h2>
+
+  <div class="document-container clearfix">
+    <div ng-repeat="doc in filteredDocuments | limitTo: displayLimit" class="document pull-left">
+      <p>
+        <a ng-href="http://www.dodis.ch/{{ doc.id }}" target="_blank">
+          <span ng-if="doc.date">{{ dateFormat(doc.date) }}</span> #{{ doc.id }} <span class="glyphicon glyphicon-link"></span></a>
+        <br>
+        {{ doc.title }}
+      </p>
+    </div>
+  </div>
+
+  <p ng-if="displayLimit < filteredDocuments.length">
+    {{ displayLimit }}/{{ filteredDocuments.length }},
+    <a href="" ng-click="$parent.displayLimit = displayLimit + 100"> mehr anzeigen / afficher plus <span class="glyphicon glyphicon-plus"></span></a>
   </p>
 
-  <h4>Angular</h4>
-  <p>
-    AngularJS is a toolset for building the framework most suited to your application development.
-  </p>
-
-  <h4>Karma</h4>
-  <p>Spectacular Test Runner for JavaScript.</p>
 </div>

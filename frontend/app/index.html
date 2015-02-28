@@ -21,19 +21,23 @@
 
     <!-- Add your site or application content here -->
     <div class="container">
-      <div class="header">
+<!--       <div class="header">
         <ul class="nav nav-pills pull-right">
           <li class="active"><a ng-href="#">Home</a></li>
           <li><a ng-href="#/about">About</a></li>
           <li><a ng-href="#">Contact</a></li>
         </ul>
-        <h3 class="text-muted">dodisMap</h3>
-      </div>
+        <h3 class="text-muted">Dodis Map</h3>
+      </div> -->
 
       <div ng-view=""></div>
 
-      <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+      <div class="row">
+        <p>
+          <a href="http://make.opendata.ch/wiki/project:diplomatic_documents_and_swiss_newspapers_in_1914" target="_blank">
+          <span class="glyphicon glyphicon-heart"></span> 
+          Open Cultural Data Hackathon</a>
+        </p>
       </div>
     </div>
 
@@ -76,13 +80,20 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/d3/d3.js"></script>
+    <script src="bower_components/topojson/topojson.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <!-- endbower -->
+    <script src="vendor/d3.geo.projection.v0.min.js"></script>
+    <script src="vendor/modernizr.js"></script>
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/directives/globe.js"></script>
+        <script src="scripts/directives/time.js"></script>
         <!-- endbuild -->
 </body>
 </html>

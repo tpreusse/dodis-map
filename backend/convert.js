@@ -29,8 +29,10 @@ function documents() {
   console.log('documents');
   q.all(
     [
-      'SELECT * FROM document `d`' +
-        ' LEFT JOIN `date_dodis` `date` ON `d`.`date_id` = `date`.`id`',
+      'SELECT ' +
+        '`d`.`id`, `d`.`doc_date`, `d`.`title`, ' +
+        '`date`.`date_begin`, `date`.`timepoint_begin` FROM document `d`' +
+      ' LEFT JOIN `date_dodis` `date` ON `d`.`date_id` = `date`.`id`',
       'SELECT * FROM document_has_place'
     ].map(promiseResult)
   ).then(function(results) {
@@ -91,6 +93,7 @@ connection.connect(function(err) {
   if(err) throw err;
   console.log('connect');
   documents();
+  places();
   connection.end();
 });
 
